@@ -1,17 +1,112 @@
 <!DOCTYPE html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<html>
-    <head>
-        <title>laurianttila.com</title>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    </head>
-    <body>
-        <h1>laurianttila</h1>
-        <p>Head of Technology @ Thoughtworks Finland</p>
-        <ul>
-          <li><a href="https://www.linkedin.com/in/laurianttila">LinkedIn</a></li>
-          <li><a href="https://toot.thoughtworks.com/@laurianttila">Mastodon</a></li>
-          <li><a href="https://www.thoughtworks.com/">Thoughtworks</a></li>
-        </ul>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laurianttila.com</title>
+    <style>
+        body {
+            background-color: #00FFFF;
+            color: #000080;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #FF00FF;
+            text-shadow: 2px 2px #FFD700;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            border: 2px dashed #000080;
+            background-color: #FFFFE0;
+            padding: 20px;
+        }
+
+        .navbar {
+            background-color: #FFD700;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            color: #000080;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .navbar a:hover {
+            color: #FF00FF;
+        }
+
+        .content {
+            margin: 20px;
+        }
+
+        .under-construction {
+            margin: 20px;
+            padding: 10px;
+            border: 2px solid #FF0000;
+            background-color: #FFFF00;
+            display: inline-block;
+        }
+
+        .under-construction img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .marquee-text {
+            background-color: #FF00FF;
+            color: #FFFFFF;
+            padding: 5px;
+            margin-top: 20px;
+            font-size: 1.5em;
+            animation: blink-animation 1s steps(5, start) infinite;
+        }
+
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.8em;
+            color: #808080;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="https://www.linkedin.com/in/laurianttila/" target="_blank">About Me</a>
+        <a href="https://infosec.exchange/@paronianttila" target="_blank">My Blog</a> 
+    </div>
+
+    <div class="container">
+        <h1>Welcome to the Homepage of Lauri Anttila!</h1>
+        <div class="under-construction">
+            <img src="images/underconstruction.gif" width="100px" height="100px" alt="Under Construction">
+            <p>This page is still under construction!</p>
+        </div>
+
+        <div class="content">
+            <p>Hi there! Thanks for visiting my homepage. This site is a work in progress, but soon it will be filled with cool content, links to my favorite sites, and more!</p>
+            <p>Stay tuned for more updates!</p>
+        </div>
+
+        <marquee class="marquee-text" behavior="scroll" direction="left">Check back soon for awesome updates!</marquee>
+    </div>
+
+    <footer>
+        <p>© 2024 Lauri Anttila. All rights reserved.</p>
+    </footer>
+</body>
 </html>
