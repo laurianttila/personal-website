@@ -15,6 +15,7 @@
             --light-gray: #eaeaea;
             --accent: #0070f3;
             --defense: #00ff41;
+            --orcid: #A6CE39;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -52,7 +53,7 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
             padding: 1.25rem 0;
         }
-        .nav-content { display: flex; justify-content: space-between; items: center; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
         .nav-links { display: flex; gap: 1.5rem; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
         .nav-links a { text-decoration: none; color: var(--gray); transition: color 0.2s; }
         .nav-links a:hover { color: var(--fg); }
@@ -71,7 +72,7 @@
 
         /* Research Section */
         section { padding-bottom: 10rem; }
-        .section-label { display: flex; items: center; gap: 1rem; margin-bottom: 3rem; }
+        .section-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem; }
         .section-label span { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gray); }
         .line { flex-grow: 1; height: 1px; background: var(--light-gray); }
 
@@ -81,6 +82,8 @@
         h3 { font-size: 2.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
         .research-p { color: var(--gray); margin-bottom: 2rem; }
 
+        .research-links { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+
         .uni-link {
             display: inline-block; font-size: 14px; font-weight: 700; color: var(--fg);
             text-decoration: none; border-bottom: 2px solid var(--fg); padding-bottom: 2px;
@@ -88,7 +91,81 @@
         }
         .uni-link:hover { opacity: 0.5; }
 
-        /* GitHub Box (Original requested style) */
+        /* ORCID Badge */
+        .orcid-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.45rem 0.75rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+        .orcid-pill:hover {
+            border-color: var(--fg);
+            color: var(--fg);
+            transform: translateY(-1px);
+        }
+        .orcid-icon {
+            flex-shrink: 0;
+            display: block;
+        }
+
+        /* Live Publications Feed */
+        #orcid-works-wrapper {
+            margin-top: 4.5rem;
+            display: none;
+        }
+        .pub-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .pub-header span {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gray);
+        }
+        .pub-list {
+            border-top: 1px solid var(--light-gray);
+        }
+        .pub-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 2rem;
+            padding: 1.25rem 0.5rem;
+            border-bottom: 1px solid var(--light-gray);
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s;
+        }
+        .pub-row:hover {
+            background: #fafafa;
+        }
+        .pub-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .pub-meta {
+            font-size: 0.8125rem;
+            color: var(--gray);
+        }
+        .pub-year {
+            font-size: 12px;
+            color: var(--gray);
+            white-space: nowrap;
+        }
+
+        /* GitHub Box */
         .toolkit-card {
             background: #000; color: #fff; padding: 2rem; border-radius: 12px;
             text-decoration: none; display: block; border: 1px solid #000;
@@ -132,14 +209,18 @@
             font-size: 10px; z-index: 100; display: none;
         }
 
+        /* Defense Mode Overrides */
         .defense-mode { background-color: #050505; color: var(--defense); }
         .defense-mode .grid-bg { background-image: radial-gradient(#111 1px, transparent 1px); }
         .defense-mode nav { background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--defense); }
-        .defense-mode h1, .defense-mode h3, .defense-mode h4, .defense-mode .hero-p span { color: var(--defense); }
-        .defense-mode .hero-p, .defense-mode .research-p, .defense-mode .exp-row p, .defense-mode .footer-links a { color: #008f11; }
-        .defense-mode .exp-row:hover { background: #001100; }
+        .defense-mode h1, .defense-mode h3, .defense-mode h4, .defense-mode .hero-p span, .defense-mode .pub-title { color: var(--defense); }
+        .defense-mode .hero-p, .defense-mode .research-p, .defense-mode .exp-row p, .defense-mode .footer-links a, .defense-mode .pub-meta { color: #008f11; }
+        .defense-mode .exp-row:hover, .defense-mode .pub-row:hover { background: #001100; }
         .defense-mode .toolkit-card { border-color: var(--defense); color: var(--defense); }
         .defense-mode .uni-link { color: var(--defense); border-color: var(--defense); }
+        .defense-mode .orcid-pill { background: #000; border-color: #008f11; color: var(--defense); }
+        .defense-mode .orcid-pill:hover { border-color: var(--defense); }
+        .defense-mode .pub-list, .defense-mode .pub-row, .defense-mode .experience-list, .defense-mode .exp-row { border-color: #003b00; }
     </style>
 </head>
 <body class="antialiased">
@@ -180,11 +261,21 @@
                     <p class="research-p">
                         My doctoral research investigates the vulnerabilities of critical water infrastructure in the face of hybrid operations. I analyze how technology and strategy intersect to build national resilience.
                     </p>
-                    <a href="https://converis.jyu.fi/converis/portal/detail/Person/261279648?lang=en_GB" target="_blank" class="uni-link">University Profile & Publications &rarr;</a>
+                    <div class="research-links">
+                        <a href="https://converis.jyu.fi/converis/portal/detail/Person/261279648?lang=en_GB" target="_blank" rel="noopener" class="uni-link">University Profile & Publications &rarr;</a>
+                        
+                        <a href="https://orcid.org/0009-0006-0719-7979" target="_blank" rel="noopener" class="orcid-pill mono" aria-label="View ORCID record">
+                            <svg class="orcid-icon" width="16" height="16" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="128" cy="128" r="128" fill="#A6CE39"/>
+                                <path fill="#FFFFFF" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7 0-21.5-13.7-39.7-43.7-39.7h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"/>
+                            </svg>
+                            <span>https://orcid.org/0009-0006-0719-7979</span>
+                        </a>
+                    </div>
                 </div>
 
                 <div>
-                    <a href="https://github.com/laurianttila/water-utility-toolkit" target="_blank" class="toolkit-card">
+                    <a href="https://github.com/laurianttila/water-utility-toolkit" target="_blank" rel="noopener" class="toolkit-card">
                         <div class="card-header">
                             <span class="tag mono">Active Development</span>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.416-4.041-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
@@ -194,6 +285,15 @@
                         <span class="mono" style="font-size: 11px; font-weight: 700;">View Repository &rarr;</span>
                     </a>
                 </div>
+            </div>
+
+            <!-- Auto-populated from ORCID Public API if public works exist -->
+            <div id="orcid-works-wrapper">
+                <div class="pub-header mono">
+                    <span>Selected Publications // Synced via ORCID</span>
+                    <span id="orcid-count"></span>
+                </div>
+                <div id="orcid-works-list" class="pub-list"></div>
             </div>
         </section>
 
@@ -233,9 +333,10 @@
                 <p style="font-size: 14px; font-weight: 500;">Tampere area, Finland</p>
             </div>
             <div class="footer-links mono">
-                <a href="https://linkedin.com/in/laurianttila/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/laurianttila" target="_blank">GitHub</a>
-                <a href="https://infosec.exchange/@paronianttila" target="_blank">Mastodon</a>
+                <a href="https://linkedin.com/in/laurianttila/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/laurianttila" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://infosec.exchange/@paronianttila" target="_blank" rel="noopener">Mastodon</a>
+                <a href="https://orcid.org/0009-0006-0719-7979" target="_blank" rel="noopener">ORCID</a>
             </div>
         </footer>
     </main>
@@ -256,6 +357,63 @@
                 cursor = 0;
             }
         });
+
+        // Fetch public works from ORCID API v3.0
+        async function loadOrcidWorks() {
+            const orcidId = '0009-0006-0719-7979';
+            const endpoint = `https://pub.orcid.org/v3.0/${orcidId}/works`;
+
+            try {
+                const response = await fetch(endpoint, {
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (!response.ok) return;
+
+                const data = await response.json();
+                const groups = data.group || [];
+                if (groups.length === 0) return;
+
+                const wrapper = document.getElementById('orcid-works-wrapper');
+                const list = document.getElementById('orcid-works-list');
+                const countLabel = document.getElementById('orcid-count');
+
+                const works = groups.slice(0, 6).map(group => {
+                    const summary = group['work-summary'][0];
+                    const title = summary.title?.title?.value || 'Untitled Work';
+                    const year = summary['publication-date']?.year?.value || '';
+                    const journal = summary['journal-title']?.value || summary.type?.replace(/-/g, ' ') || '';
+                    
+                    // Extract DOI or external URL if available
+                    let url = `https://orcid.org/${orcidId}`;
+                    const extIds = summary['external-ids']?.['external-id'] || [];
+                    const doi = extIds.find(id => id['external-id-type'] === 'doi');
+                    if (doi && doi['external-id-url']?.value) {
+                        url = doi['external-id-url'].value;
+                    } else if (summary.url?.value) {
+                        url = summary.url.value;
+                    }
+
+                    return { title, year, journal, url };
+                });
+
+                list.innerHTML = works.map(work => `
+                    <a href="${work.url}" target="_blank" rel="noopener" class="pub-row">
+                        <div>
+                            <div class="pub-title">${work.title}</div>
+                            <div class="pub-meta" style="text-transform: capitalize;">${work.journal}</div>
+                        </div>
+                        <div class="pub-year mono">${work.year} &nearr;</div>
+                    </a>
+                `).join('');
+
+                countLabel.textContent = `[${groups.length} RECORD${groups.length === 1 ? '' : 'S'}]`;
+                wrapper.style.display = 'block';
+            } catch (err) {
+                console.warn('ORCID sync skipped:', err);
+            }
+        }
+
+        loadOrcidWorks();
     </script>
 </body>
 </html>
